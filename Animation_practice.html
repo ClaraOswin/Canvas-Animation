@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="578" height="200"></canvas>
+    <script>
+      window.requestAnimFrame = (function(callback) {
+        return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+      })();
+
+      /*function drawRectangle(myRectangle, context) {
+        context.beginPath();
+        context.rect(myRectangle.x, myRectangle.y, myRectangle.width, myRectangle.height);
+        context.fillStyle = '#8ED6FF';
+        context.fill();
+        context.lineWidth = myRectangle.borderWidth;
+        context.strokeStyle = 'black';
+        context.stroke();
+      }
+      */
+
+     function drawCloud(myCloud, context) {
+
+  //context.beginPath();
+      /*context.moveTo(170, 80);
+      context.bezierCurveTo(130, 100, 130, 150, 230, 150);
+      context.bezierCurveTo(250, 180, 320, 180, 340, 150);
+      context.bezierCurveTo(200, 80, 400, 100, 300, 80);
+      context.bezierCurveTo(250, 100, 300, 40, 250, 50);
+      context.bezierCurveTo(320, 5, 250, 20, 250, 50);
+      context.bezierCurveTo(200, 5, 150, 20, 170, 80);
+
+      // complete custom shape
+      context.closePath();
+      context.lineWidth = 5;
+      context.strokeStyle = 'black';
+      context.fillStyle = 'black';
+      context.fill();
+      context.stroke();*/
+
+
+context.beginPath();
+context.moveTo(267,-532);
+context.bezierCurveTo(266,-526,261,-528,262,-544);
+context.bezierCurveTo(263,-559,270,-560,262,-576);
+context.bezierCurveTo(253,-593,246,-584,246,-576);
+context.bezierCurveTo(246,-569,250,-549,256,-541);
+context.bezierCurveTo(263,-533,255,-521,252,-521);
+context.bezierCurveTo(249,-521,247,-519,246,-528);
+context.bezierCurveTo(244,-536,244,-546,230,-543);
+context.bezierCurveTo(216,-540,223,-513,236,-515);
+context.bezierCurveTo(250,-517,243,-504,234,-502);
+context.bezierCurveTo(234,-502,209,-506,223,-497);
+context.bezierCurveTo(223,-497,232,-498,231,-485);
+context.bezierCurveTo(229,-471,200,-516,183,-500);
+context.bezierCurveTo(166,-485,191,-478,198,-478);
+context.bezierCurveTo(205,-478,219,-481,227,-478);
+context.bezierCurveTo(234,-475,239,-466,215,-461);
+context.bezierCurveTo(192,-456,183,-455,192,-444);
+context.bezierCurveTo(200,-434,218,-461,227,-459);
+context.bezierCurveTo(236,-458,238,-454,238,-449);
+context.bezierCurveTo(238,-444,236,-443,230,-442);
+context.bezierCurveTo(224,-441,211,-440,222,-433);
+context.bezierCurveTo(232,-427,240,-442,240,-442);
+context.bezierCurveTo(240,-442,253,-442,242,-432);
+context.bezierCurveTo(232,-421,178,-432,190,-403);
+context.bezierCurveTo(202,-373,239,-424,239,-424);
+context.bezierCurveTo(239,-424,251,-437,251,-427);
+context.bezierCurveTo(251,-418,253,-415,266,-427);
+context.bezierCurveTo(278,-438,275,-414,266,-410);
+context.bezierCurveTo(256,-407,228,-385,236,-372);
+context.bezierCurveTo(245,-358,263,-392,264,-399);
+context.bezierCurveTo(266,-406,275,-417,280,-424);
+context.bezierCurveTo(285,-431,288,-403,291,-427);
+context.bezierCurveTo(291,-427,300,-430,296,-414);
+context.bezierCurveTo(292,-398,297,-384,297,-384);
+context.bezierCurveTo(297,-384,309,-370,307,-420);
+context.bezierCurveTo(307,-420,307,-442,322,-427);
+context.bezierCurveTo(322,-427,316,-402,330,-382);
+context.bezierCurveTo(336,-374,351,-396,340,-409);
+context.bezierCurveTo(340,-409,327,-437,331,-433);
+context.bezierCurveTo(338,-427,330,-453,343,-443);
+context.bezierCurveTo(343,-443,354,-394,376,-411);
+context.bezierCurveTo(398,-427,360,-443,360,-443);
+context.bezierCurveTo(360,-443,341,-458,350,-456);
+context.bezierCurveTo(375,-451,378,-474,361,-468);
+context.bezierCurveTo(353,-465,346,-469,346,-469);
+context.bezierCurveTo(346,-469,345,-484,370,-480);
+context.bezierCurveTo(378,-479,390,-466,399,-485);
+context.bezierCurveTo(407,-504,371,-493,371,-493);
+context.bezierCurveTo(371,-493,353,-483,356,-501);
+context.bezierCurveTo(359,-518,349,-511,349,-511);
+context.bezierCurveTo(349,-511,332,-511,356,-529);
+context.bezierCurveTo(380,-547,394,-540,393,-561);
+context.bezierCurveTo(392,-581,360,-541,360,-541);
+context.bezierCurveTo(360,-541,346,-517,335,-528);
+context.bezierCurveTo(324,-540,374,-589,344,-569);
+context.bezierCurveTo(344,-569,327,-554,330,-546);
+context.bezierCurveTo(333,-537,324,-528,321,-535);
+context.bezierCurveTo(317,-542,313,-536,313,-536);
+context.bezierCurveTo(313,-536,300,-532,314,-550);
+context.bezierCurveTo(327,-568,320,-567,320,-567);
+context.bezierCurveTo(320,-567,308,-568,308,-554);
+context.bezierCurveTo(308,-539,305,-533,302,-536);
+context.bezierCurveTo(298,-539,302,-551,296,-554);
+context.bezierCurveTo(290,-557,292,-570,296,-581);
+context.bezierCurveTo(300,-593,280,-605,282,-581);
+context.bezierCurveTo(282,-581,288,-554,282,-547);
+context.bezierCurveTo(282,-547,271,-555,267,-532);
+context.closePath();
+context.fillStyle="rgb(0,6,7)";
+context.lineStyle="rgb(0,0,0)";
+context.lineWidth=1;
+context.fill();
+context.stroke();
+
+
+
+      
+
+      }
+      function animate(myRectangle, canvas, context, startTime) {
+        // update
+        var time = (new Date()).getTime() - startTime;
+        var amplitude = 150;
+
+
+        // in ms
+        var period = 2000;
+        var centerX = canvas.width / 2 - myRectangle.width / 2;
+        var nextX = amplitude * Math.sin(time * 2 * Math.PI / period) + centerX;
+        myRectangle.x = nextX;
+        myCloud.x = nextX;
+
+        // clear
+        //context.clearRect(0, 0, canvas.width, canvas.height);
+
+        // draw
+        drawRectangle(myRectangle, context);
+        drawCloud(myCloud, context);
+
+        // request new frame
+        requestAnimFrame(function() {
+          animate(myRectangle, myCloud, canvas, context, startTime);
+        });
+      }
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+
+      var myRectangle = {
+        x: 250,
+        y: 70,
+        width: 100,
+        height: 50,
+        borderWidth: 5
+      };
+
+      var myCloud = {
+        x: 150,
+        y: 30,
+        width:20,
+        height:20,
+        borderWidth: 5
+      };
+
+      drawRectangle(myRectangle, context);
+      drawCloud(myCloud, context);
+
+      // wait one second before starting animation
+      setTimeout(function() {
+        var startTime = (new Date()).getTime();
+        animate(myRectangle, myCloud, canvas, context, startTime);
+      }, 1000);
+    </script>
+  </body>
+</html>      

@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="grid" style="z-index: 5; top:40px; position:absolute;"></div>
+    <button id = 'blocks'>Blocks</button>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+    <script>
+          var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+
+    $(document).ready(function(){
+  grid('blocks', 10, 10, 800, 800);
+  
+  $("#blocks").click(function(){
+    grid('blocks', 10, 10, 800, 800);
+  });
+  $("#diamonds").click(function(){
+    grid('diamonds', 10, 10, 800, 800);
+  });
+  $("#hex").click(function(){
+    grid('hex', 10, 10, 800, 800);
+  });
+  
+  });
+
+
+
+    function grid(type, w, h, totalW, totalH){
+    
+    var $this = this;
+    this.type = type || 'blocks';// blocks, diamonds, hexagons
+    this.blockW = w || 25;
+    this.blockH = h || 25;
+    this.container;
+        $('#grid').empty();
+  
+    this.container = document.createElement('div');
+    this.container.style.position = 'absolute';
+    this.container.style.width = '100%';
+    this.container.style.height = '100%';
+    this.container.id = 'gridContainer';
+        
+  
+    var c = document.createElement("canvas");
+        c.width  = totalW;
+        c.height = totalH;
+        
+    var totalW = totalW || $(document).width();
+    var totalH = totalH || $(document).height();
+};
+
+if(this.type == 'blocks'){
+        
+    var mapGridCanvas = c.getContext("2d");
+    mapGridCanvas.clearRect(0, 0, c.width, c.height);
+    mapGridCanvas.globalAlpha = 1;
+    mapGridCanvas.strokeStyle = "#1e1e1e";
+    mapGridCanvas.lineWidth = 1;
+        mapGridCanvas.beginPath();
+        var x = 0;
+        var y = 0;
+    for(var i = 0;i < Math.round(totalW/blockW); i++){
+                
+        x = i*blockW;
+        y = 0;
+        mapGridCanvas.moveTo(x,y);
+        mapGridCanvas.lineTo(x,y+totalH);
+        
+    }
+        
+    for(var j = 0; j < Math.round(totalH/blockH); j++){
+                
+        x = 0;
+        y = j*blockH;
+                
+        mapGridCanvas.moveTo(x,y);
+        mapGridCanvas.lineTo(x+totalW,y);   
+                
+    }
+        
+    mapGridCanvas.stroke();
+    this.container.appendChild(c);
+    document.getElementById('grid').appendChild(this.container);
+        
+}
+
+
+
+      // begin custom shape
+      /*context.beginPath();
+      context.moveTo(170, 80);
+      context.bezierCurveTo(130, 100, 130, 150, 230, 150);
+      context.bezierCurveTo(250, 180, 320, 180, 340, 150);
+      context.bezierCurveTo(420, 150, 420, 120, 390, 100);
+      context.bezierCurveTo(430, 40, 370, 30, 340, 50);
+      context.bezierCurveTo(320, 5, 250, 20, 250, 50);
+      context.bezierCurveTo(200, 5, 150, 20, 170, 80);
+
+      // complete custom shape
+      context.closePath();
+      context.lineWidth = 5;
+      context.strokeStyle = 'blue';
+      context.fillStyle = 'black';
+      context.fill();
+      context.stroke();
+      */
+
+     
+      
+    </script>
+  </body>
+</html>      

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang = 'en'>
+<head>
+<title>Particle Splatter</title>
+<meta charset = 'utf-8'>
+<style>
+body {
+    background-color:ivory
+}
+canvas {
+    border: 1px solid red;
+}
+</style>
+</head>
+<body>
+    <button id="go">Splash!</button>
+    <canvas id="canvas" width="326" height="237"></canvas>
+<script>
+var splatter = function(){
+context.fillStyle="black";
+context.lineStyle="black";
+context.lineWidth=1;
+context.beginPath();
+context.moveTo(135,553);
+context.bezierCurveTo(135,561,139,561,134,569);
+context.bezierCurveTo(130,577,126,573,126,569);
+context.bezierCurveTo(126,565,129,556,132,552);
+context.bezierCurveTo(135,548,131,542,130,542);
+context.bezierCurveTo(128,542,127,541,126,545);
+context.bezierCurveTo(126,549,126,554,119,553);
+context.bezierCurveTo(112,551,115,538,122,539);
+context.bezierCurveTo(129,540,120,530,119,524);
+context.bezierCurveTo(118,517,104,539,95,532);
+context.bezierCurveTo(87,524,99,520,103,520);
+context.bezierCurveTo(106,520,113,522,117,520);
+context.bezierCurveTo(121,519,123,509,123,506);
+context.bezierCurveTo(123,504,122,503,119,503);
+context.bezierCurveTo(116,502,109,501,115,498);
+context.bezierCurveTo(120,495,124,503,124,503);
+context.bezierCurveTo(124,503,137,500,136,491);
+context.bezierCurveTo(136,486,134,473,141,473);
+context.bezierCurveTo(159,472,126,502,154,504);
+context.bezierCurveTo(177,513,165,478,176,487);
+context.bezierCurveTo(186,495,172,512,172,512);
+context.bezierCurveTo(172,512,176,523,188,521);
+context.bezierCurveTo(192,521,198,514,202,524);
+context.bezierCurveTo(207,533,189,528,189,528);
+context.bezierCurveTo(189,528,180,523,181,532);
+context.bezierCurveTo(183,540,178,537,178,537);
+context.bezierCurveTo(178,537,169,537,181,546);
+context.bezierCurveTo(193,555,200,551,200,562);
+context.bezierCurveTo(199,572,183,552,183,552);
+context.bezierCurveTo(183,552,176,540,171,545);
+context.bezierCurveTo(165,551,160,549,160,549);
+context.bezierCurveTo(160,549,154,547,160,556);
+context.bezierCurveTo(167,565,163,565,163,565);
+context.bezierCurveTo(163,565,158,565,157,558);
+context.bezierCurveTo(157,551,156,548,154,549);
+context.bezierCurveTo(152,551,148,558,144,555);
+context.bezierCurveTo(144,555,134,545,135,553);
+context.closePath();
+context.fill();
+context.stroke();
+};
+
+
+
+var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        window.requestAnimFrame = (function (callback) {
+            return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
+                window.setTimeout(callback, 1000 / 60);
+            };
+        })();
+
+        $("#go").html("Loading...");
+
+        var count = 60;
+        var win = new Image();
+        var splash;
+        win.onload = function () {
+            splash = new Image();
+            splash.onload = function () {
+                ctx.drawImage(win, 0, 0);
+                $("#go").html("Splash!");
+            }
+            splash.src = 'splatter';
+        }
+        //win.src = "http://dl.dropbox.com/u/139992952/window.png";
+
+        $("#go").click(function () {
+            animate();
+            count = 150;
+        });
+
+        function animate() {
+            // drawings
+            if (--count > 1) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.save();
+                ctx.drawImage(win, 0, 0);
+                ctx.globalCompositeOperation = 'destination-over';
+                ctx.drawImage(splash, 0, 0, splash.width, splash.height, 25, 25, splash.width / count, splash.height / count);
+                ctx.restore();
+            }
+
+            // request new frame
+            requestAnimFrame(function () {
+                animate();
+            });
+        }
+
+
+
+
+    </script>
+    </body>
+</html>

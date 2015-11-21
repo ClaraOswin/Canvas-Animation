@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<title>Basic Animation</title>
+<script>
+
+var canvas,
+   context,
+   x = 400,
+   y = 300;
+   //width = 500,
+   //height = 500;
+
+var clouds = [];
+
+
+function Cloud(x,y,color){
+	this.x = x;
+	this.y = y;
+	this.color = color;
+	this.dx = Math.random()*4-2;
+	this.dy = Math.random()*4-2;
+
+}
+
+function init(){
+	canvas = document.getElementById('canvas');
+	context = canvas.getContext('2d');
+
+	window.addEventListener('resize', resizeCanvas, false);
+	window.addEventListener('orientationchange', resizeCanvas, false);
+	resizeCanvas();
+	canvas.onclick = function(event){
+		handleClick(event.clientX, event.clientY);
+	};
+	timer = setInterval(resizeCanvas,30);
+}
+
+function handleClick(x,y){
+	var found = false;
+	for (var i = 0; i<clouds.length; i++){
+		d = Math.sqrt((clouds[i].x-x)*(clouds[i].x-x) + (clouds[i].y) * (clouds[i].y-y));
+		if(d <= 30) {
+			clouds.splice(i,1);
+			found = true;
+		}
+	}
+	fillBackgroundColor();
+	if(!found){
+		var colors = ['red', 'blue', 'green', 'yellow'];
+		var color = colors[Math.floor(Math.random()*colors.length)]
+		clouds.push(new Cloud(x,y, color));
+	}
+	for(var i = 0; i < clouds.length; i++){
+		drawCloud(clouds[i]);
+	}
+}
+
+function drawCloud(cloud){
+	context.translate(cloud.dx,cloud.dy);
+	context.beginPath();
+	context.moveTo(170, 80);
+      context.bezierCurveTo(130, 100, 130, 150, 230, 150);
+      context.bezierCurveTo(250, 180, 320, 180, 340, 150);
+      context.bezierCurveTo(420, 150, 420, 120, 390, 100);
+      context.bezierCurveTo(430, 40, 370, 30, 340, 50);
+      context.bezierCurveTo(320, 5, 250, 20, 250, 50);
+      context.bezierCurveTo(200, 5, 150, 20, 170, 80);
+      // complete custom shape
+      context.closePath();
+      context.lineWidth = 5;
+      context.strokeStyle = 'blue';
+      context.stroke();
+	context.fillStyle = cloud.color;
+	context.fill();
+	context.translate(-cloud.dx,-cloud.dy);
+	if (cloud.x + cloud.dx > canvas.width || cloud.x + cloud.dx < 0)
+		cloud.dx = -cloud.dx;
+	if (cloud.y + cloud.dy > canvas.height || x + cloud.dy < 0)
+		cloud.dy = -cloud.dy;
+	cloud.x += cloud.dx;
+	cloud.y += cloud.dy;
+}
+
+/*function degreesToRadians(degrees){
+	return(degrees*Math.PI)/180;
+
+}
+*/
+
+function fillBackgroundColor(){
+	context.fillStyle = 'black';
+	context.fillRect(0,0, canvas.width, canvas.height);
+
+}
+
+
+
+function resizeCanvas() {
+	canvas.width = window.innerWidth - 20;
+	canvas.height = window.innerHeight - 20;
+	fillBackgroundColor();
+	for(var i = 0; i<clouds.length; i++){
+		drawCloud(clouds[i]);
+	}
+}
+
+window.onload = init;
+
+
+
+
+
+</script>
+</head>
+<body>
+<canvas id='canvas' width=500 height=500></canvas>
+</body>
+</html>

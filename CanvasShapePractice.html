@@ -9,6 +9,7 @@
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <div id="grid" style="z-index: 5; top:40px; position:absolute;"></div>
     <button id = 'blocks'>Blocks</button>
     <canvas id="myCanvas" width="500" height="500"></canvas>
@@ -96,6 +97,15 @@ if(this.type == 'blocks'){
 
       // begin custom shape
       /*context.beginPath();
+=======
+    <canvas id="myCanvas" width="578" height="200"></canvas>
+    <script>
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+
+      // begin custom shape
+      context.beginPath();
+>>>>>>> Canvas-Changes
       context.moveTo(170, 80);
       context.bezierCurveTo(130, 100, 130, 150, 230, 150);
       context.bezierCurveTo(250, 180, 320, 180, 340, 150);
@@ -108,6 +118,7 @@ if(this.type == 'blocks'){
       context.closePath();
       context.lineWidth = 5;
       context.strokeStyle = 'blue';
+<<<<<<< HEAD
       context.fillStyle = 'black';
       context.fill();
       context.stroke();
@@ -115,6 +126,9 @@ if(this.type == 'blocks'){
 
      
       
+=======
+      context.stroke();
+>>>>>>> Canvas-Changes
     </script>
   </body>
 </html>      
